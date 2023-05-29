@@ -329,7 +329,3 @@ Work that stills needs to be done:
 * The PEFT repo and its implementation of LoRA
 * The LLAMA, OPT, and BLOOM models by META FAIR and the BigScience consortium
 * The `llmtune` repo by [kuleshov-group](https://github.com/kuleshov-group/llmtune)
-
-
-## Consultations
-Need a custom solution? Let me know: `r.m.mihaylov@gmail.com`
