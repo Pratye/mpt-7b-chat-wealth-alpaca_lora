@@ -131,9 +131,9 @@ def finetune(args):
             load_best_model_at_end=False,
             ddp_find_unused_parameters=False if tune_config.ddp else None,
 #            deepspeed='./mpttune/mpttune/deepspeed_config_stage_2.json',
-            hub_model_id='Pratye/mpt-7b-chat-wealth-alpaca_lora',
-            hub_token='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',
-            hub_strategy='checkpoint',
+#            hub_model_id='Pratye/mpt-7b-chat-wealth-alpaca_lora',
+#            hub_token='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',
+#            hub_strategy='checkpoint',
             
         )
 
@@ -173,6 +173,7 @@ def finetune(args):
 
     # Save Model
     model.save_pretrained(tune_config.lora_out_dir)
+    
 
     if tune_config.checkpoint:
         logger.info("Warning: Merge model + LoRA and save the whole checkpoint not implemented yet.")
