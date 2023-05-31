@@ -992,6 +992,7 @@ def load_model(llm_config, checkpoint, half=False, backend='triton'):
         model = MPTForCausalLM.from_pretrained(
             checkpoint,
             config=config,
+            torch_dtype=torch.float16,
             load_in_8bit=True,
             device_map=llm_config.device_map
         )
