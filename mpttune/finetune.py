@@ -130,11 +130,6 @@ def finetune(args):
             save_total_limit=tune_config.save_total_limit,
             load_best_model_at_end=False,
             ddp_find_unused_parameters=False if tune_config.ddp else None,
-#            deepspeed='./mpttune/mpttune/deepspeed_config_stage_2.json',
-#            hub_model_id='Pratye/mpt-7b-chat-wealth-alpaca_lora',
-#            hub_token='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',
-#            hub_strategy='checkpoint',
-            
         )
 
         trainer = transformers.Trainer(
@@ -174,6 +169,10 @@ def finetune(args):
     # Save Model
     model.save_pretrained(tune_config.lora_out_dir)
     
+    trainer.save_model(tune_config.lora_out_dir)
+    
+    # Save the tokenizer
+#    tokenizer.save_pretrained(model_output_path)
 
     if tune_config.checkpoint:
         logger.info("Warning: Merge model + LoRA and save the whole checkpoint not implemented yet.")

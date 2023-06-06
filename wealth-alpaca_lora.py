@@ -183,7 +183,7 @@ trainer = transformers.Trainer(
         save_steps=50,
         eval_steps=50 if VAL_SET_SIZE > 0 else None,
         output_dir=OUTPUT_DIR,
-        save_total_limit=3,
+        save_total_limit=2,
         load_best_model_at_end=True if VAL_SET_SIZE > 0 else False,
         ddp_find_unused_parameters=False if ddp else None,
     ),
@@ -203,9 +203,11 @@ if torch.__version__ >= '2' and sys.platform != 'win32':
 
 # Train
 trainer.train()
+trainer.save_pretrained(OUTPUT_DIR)
+trainerf.push_to_hub("Pratye/mpt-7b-chat-wealth-alpaca_lora", use_auth_token=True)
 wandb.finish()
 
 # Save the fine-tuned model
-model.save_pretrained(OUTPUT_DIR)
+#model.save_pretrained(OUTPUT_DIR)
 
-model.push_to_hub("Pratye/mpt-7b-chat-wealth-alpaca_lora", use_auth_token=True)
+#model.push_to_hub("Pratye/mpt-7b-chat-wealth-alpaca_lora", use_auth_token=True)
