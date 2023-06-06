@@ -167,12 +167,12 @@ def finetune(args):
         logger.info('Train completed.')
 
     # Save Model
-    model.save_pretrained(tune_config.lora_out_dir)
+    model.save_pretrained(tune_config.lora_out_dir+'model/')
     
     trainer.save_model(tune_config.lora_out_dir)
     
     # Save the tokenizer
-#    tokenizer.save_pretrained(model_output_path)
+    tokenizer.save_pretrained(tune_config.lora_out_dir)
 
     if tune_config.checkpoint:
         logger.info("Warning: Merge model + LoRA and save the whole checkpoint not implemented yet.")
