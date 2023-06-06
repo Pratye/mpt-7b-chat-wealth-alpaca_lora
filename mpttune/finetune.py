@@ -170,7 +170,7 @@ def finetune(args):
     model.save_pretrained(tune_config.lora_out_dir+'model/')
     
     trainer.save_model(tune_config.lora_out_dir)
-    trainer.push_to_hub("Pratye/met-7b-chat-2", use_auth_token=True)
+#     trainer.push_to_hub("Pratye/met-7b-chat-2", use_auth_token=True)
     
     # Save the tokenizer
     tokenizer.save_pretrained(tune_config.lora_out_dir)
