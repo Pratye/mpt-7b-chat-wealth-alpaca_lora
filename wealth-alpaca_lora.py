@@ -204,7 +204,7 @@ if torch.__version__ >= '2' and sys.platform != 'win32':
 # Train
 trainer.train()
 trainer.save_pretrained(OUTPUT_DIR)
-trainerf.push_to_hub("Pratye/mpt-7b-chat-wealth-alpaca_lora", use_auth_token=True)
+trainer.push_to_hub("Pratye/mpt-7b-chat-wealth-alpaca_lora", use_auth_token=True)
 wandb.finish()
 
 # Save the fine-tuned model
